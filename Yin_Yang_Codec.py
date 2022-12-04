@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 import os
+from main import encoding, decoding
 
 def encode():
     window = tk.Tk()
@@ -12,10 +13,11 @@ def encode():
         if os.path.isdir(savedPath.get()) == False:
             messagebox.showinfo("Wrong diectory", "Please select correct directory")
             return
-        filename = filedialog.askopenfilename(initialdir = "/", title = "Select a File",
-                                                filetypes = (("Text files", "*.txt*"),))
-        print(filename)
+        inputFile = filedialog.askopenfilename(initialdir = "/", title = "Select a File",
+                                                filetypes = (('All Files',"*"),))
+        print(inputFile)
         print(savedPath.get())
+        encoding(inputFile,savedPath.get())
         # use filename and savedPath
     
     
@@ -33,10 +35,11 @@ def decode():
         if os.path.isdir(savedPath.get()) == False:
             messagebox.showinfo("Wrong diectory", "Please select correct directory")
             return
-        filename = filedialog.askopenfilename(initialdir = "/", title = "Select a File",
-                                                filetypes = (("Text files", "*.md*"),))
-        print(filename)
+        inputFilePath = filedialog.askopenfilename(initialdir = "/", title = "Select a File",
+                                                filetypes = (("Text files", "*.dna*"),))
+        print(inputFilePath)
         print(savedPath.get())
+        decoding(inputFilePath, savedPath.get())
         # use filename and savedPath
     
     
