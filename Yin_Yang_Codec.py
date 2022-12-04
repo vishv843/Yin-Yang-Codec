@@ -21,7 +21,7 @@ def encode():
         inputFile = filedialog.askopenfilename(initialdir = "/", title = "Select a File",
                                                 filetypes = (('Image Files',"*.jpeg"),
                                                              ('Image Files',"*.png"),
-                                                             ('Text File',"*.txt"),))
+                                                             ))
         print(inputFile)
         print(savedPath.get())
         encoding(inputFile,savedPath.get())
