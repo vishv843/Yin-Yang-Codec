@@ -1,25 +1,46 @@
 import tkinter as tk
+from tkinter import filedialog, messagebox
+import os
 
 def encode():
     window = tk.Tk()
     window.title("Encoder") 
-    binary = tk.Entry(window, width=20)
-    binary.pack()
-    def onclick():
-        encoded = binary.get() # import encoder function here
-        tk.Label(window, text="Encoded output is "+ str(encoded), font=("Times New Roman", 15)).pack(side="bottom")
-    tk.Button(window, text="Enter", command=onclick).pack()
+    savedPath = tk.Entry(window, width=20)
+    savedPath.pack()
+    def browseFiles():
+
+        if os.path.isdir(savedPath.get()) == False:
+            messagebox.showinfo("Wrong diectory", "Please select correct directory")
+            return
+        filename = filedialog.askopenfilename(initialdir = "/", title = "Select a File",
+                                                filetypes = (("Text files", "*.txt*"),))
+        print(filename)
+        print(savedPath.get())
+        # use filename and savedPath
+    
+    
+    tk.Button(window, text="Browse Files", command=browseFiles).pack()
     window.mainloop()
+    
 
 def decode():
     window = tk.Tk()
-    window.title("Decoder")
-    dna_sequence = tk.Entry(window, width=20)
-    dna_sequence.pack()
-    def onclick():
-        decoded = dna_sequence.get()  # import decoder sequence here
-        tk.Label(window, text="Decoded output is "+ str(decoded), font=("Times New Roman", 15)).pack(side="bottom")
-    tk.Button(window, text="Enter", command=onclick).pack()
+    window.title("Decoder") 
+    savedPath = tk.Entry(window, width=20)
+    savedPath.pack()
+    def browseFiles():
+
+        if os.path.isdir(savedPath.get()) == False:
+            messagebox.showinfo("Wrong diectory", "Please select correct directory")
+            return
+        filename = filedialog.askopenfilename(initialdir = "/", title = "Select a File",
+                                                filetypes = (("Text files", "*.md*"),))
+        print(filename)
+        print(savedPath.get())
+        # use filename and savedPath
+    
+    
+    tk.Button(window, text="Browse Files", command=browseFiles).pack()
     window.mainloop()
 
 
